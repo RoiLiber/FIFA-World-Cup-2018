@@ -65,9 +65,9 @@ class Matches extends Component {
   render() {
     const { groups, teams, stadiums, isLoading } = this.props;
     const matchesObj = !isLoading && this.getAllMatchesByGroup();
-    console.log(matchesObj)
+    // console.log(matchesObj)
     if (isLoading) {
-      return <span>Loading...</span>;
+      return <span className="Loading">Loading . . .</span>;
     }
 
     return (

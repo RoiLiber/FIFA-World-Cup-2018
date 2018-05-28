@@ -1,6 +1,7 @@
 .App {
   display: flex;
   flex-wrap: wrap;
+  min-width: 610px;
 }
 
 * {
@@ -9,4 +10,13 @@
 
 .Main {
   margin-top: 80px;
+}
+
+.Loading {
+  margin: 30px;
+  height: 50px;
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
 }

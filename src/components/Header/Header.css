@@ -4,6 +4,7 @@
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
+    min-width: 610px;
     padding: 10px 10px 0 10px;
     box-shadow: 0 1px 12px -3px rgba(0, 0, 0, 0.925);
     background-color: RGB(11, 95, 145);
@@ -36,10 +37,22 @@
     margin: 10px 10px;
     width: 50px;
     height: 50px;
-    animation: App-logo-spin infinite 20s linear;
     position: absolute;
     right: 5px;
     top: 5px;
+    animation: App-logo-spin infinite 10s linear;
+}
+
+.Boll2 {
+    position: absolute;
+    right: 70px;
+    animation: App-logo-spin infinite 20s linear;
+}
+
+.Boll3 {
+    position: absolute;
+    right: 140px;
+    animation: App-logo-spin infinite 30s linear;
 }
 
 .Header_Nav {

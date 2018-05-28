@@ -38,7 +38,7 @@ class Standings extends Component {
     const { groups, teams, isLoading } = this.props;
     
     if (isLoading) {
-      return <span>Loading...</span>;
+      return <span className="Loading">Loading . . .</span>;
     }
 
     return (

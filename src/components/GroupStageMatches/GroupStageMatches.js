@@ -35,7 +35,7 @@ class GroupStageMatches extends Component {
     const { groups, teams, stadiums, isLoading } = this.props;
 
     if (isLoading) {
-      return <span>Loading...</span>;
+      return <span className="Loading">Loading . . .</span>;
     }
 
     return (

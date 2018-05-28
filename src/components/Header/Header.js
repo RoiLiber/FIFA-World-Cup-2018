@@ -14,11 +14,11 @@ const Header = () => (
         <img className="Logo" src={logo} alt="logo" />
         <span className="Header_Title">FIFA World Cup 2018 - Russia</span>
         <img className="Boll" src={boll} alt="ball" />
+        <img className="Boll Boll2" src={boll} alt="ball" />
+        <img className="Boll Boll3" src={boll} alt="ball" />
     </div>
     <div className="Header_Nav">
-        <NavLink exact to="/">
-            Matches
-        </NavLink>
+        <NavLink exact to="/">Matches</NavLink>
         <NavLink to="/standings">Standings</NavLink>  
         <NavLink to="/GroupStageMatches">Group Stage Matches</NavLink>
     </div>
