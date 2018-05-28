@@ -1,0 +1,17 @@
+.Group {
+    margin: 5px;
+    background: white;
+    width: calc(25% - 10px);
+    border: 2px solid gray;
+}
+
+.Group_title {
+    background: #ceced1;
+    padding: 10px;
+    border-bottom: 1px solid #c3c3c3;
+}
+
+
+
+
+

@@ -1,0 +1,12 @@
+.App {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.Main {
+  margin-top: 80px;
+}

@@ -1,0 +1,74 @@
+.Header {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px 10px 0 10px;
+    box-shadow: 0 1px 12px -3px rgba(0, 0, 0, 0.925);
+    background-color: RGB(11, 95, 145);
+}
+
+.Header_Top {
+    display: flex;
+    align-items: center;
+    width: 80%;
+}
+
+.Header_Title {
+    font-weight: bold;
+    font-size: 25px;
+    color: white;
+    margin: 0 100px;
+    margin: 10px 70px;
+}
+
+.Logo {
+    height: 80px;
+    width: 130px;
+    position: absolute;
+    top: -2px;
+    left: -35px;
+}
+
+.Boll {
+    display: flex;
+    margin: 10px 10px;
+    width: 50px;
+    height: 50px;
+    animation: App-logo-spin infinite 20s linear;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.Header_Nav {
+    display: flex;
+    width: 100%;
+    padding: 0 60px;
+}
+
+.Header a {
+    color: black;
+    font-size: 15px;
+    text-decoration: none;
+    display: flex;
+    height: 100%;
+    width: 170px;
+    justify-content: center;
+}
+
+.Header a.active {
+    color: white;
+    font-weight: bold;
+    border-bottom: 3px solid white;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+
+
