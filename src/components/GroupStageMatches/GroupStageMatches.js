@@ -9,12 +9,17 @@ import "./GroupStageMatches.css";
 const Match = ({ teams , date, stadium, city }) => {
   return (
     <div className="Match">
-      <div className="Team__Score">
-        <img src={teams[0].flag} alt="team.name" /> <span>{teams[0].name}</span> <input type="number" min="0" max="9" placeholder="0" />
-      </div>
-       -VS- 
-      <div className="Team__Score Team__Score2">
-        <input type="number" min="0" max="9" placeholder="0" /> <span>{teams[1].name}</span> <img src={teams[1].flag} alt="team.name" /> 
+      <div className="Match__Teams">
+        <div className="Team__Score">
+          <img src={teams[0].flag} alt="team.name"/> 
+          <span>{teams[0].name}</span> 
+          <input type="number" min="0" max="9" placeholder="0" />
+        </div> 
+        <div className="Team__Score">
+           <img src={teams[1].flag} alt="team.name"/>
+          <span>{teams[1].name}</span> 
+          <input type="number" min="0" max="9" placeholder="0"/> 
+        </div>      
       </div>
       <div className="Match__Details">
         <span>{date}</span>
@@ -22,7 +27,6 @@ const Match = ({ teams , date, stadium, city }) => {
         <span>{stadium.city}</span>    
       </div>
     </div>
-    
   );
 };
 
