@@ -23,6 +23,7 @@ class App extends Component {
   componentDidMount() {
     this.setState({ isLoading: true });
 
+    
     fetch(
       "https://raw.githubusercontent.com/lsv/fifa-worldcup-2018/master/data.json"
     )
