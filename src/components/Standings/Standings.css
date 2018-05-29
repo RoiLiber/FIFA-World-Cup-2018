@@ -7,47 +7,95 @@
 
 .Groups {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
 .Group__table {
     width: 100%;
-    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .Group__table-head {
-    padding: 0.2rem;
-    font-size: 0.8rem;
-    font-weight: bold;
+    font-size: 15px;
+    width: 100%;
+}
+
+.Group__table-head tr {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #dee2e6;
+    padding: 5px;
+    font-size: 15px;
+    color: gray;
+}
+
+.Group__table-head tr th {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.Group__table-head tr th abbr {
+    text-decoration: none;
+}
+
+.Group__table-body {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.Group__table-body tr {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #dee2e6;
+    padding: 5px;
+    font-size: 15px;
+}
+
+.Group__table-body tr td {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.Group__table-body tr:hover {
+    background-color: rgb(247, 240, 240);
 }
 
 .Group__table td,
 .Group__table th {
-    border: 1px solid #dee2e6;
-    padding: 0.2rem;
-    font-size: 0.8rem;
-    text-align: center;
+    font-weight: normal;
 }
 
 .Group__table td:first-child,
 .Group__table th:first-child {
-    text-align: left;
-    width: 107px;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
 }
 
 .Group__table tbody tr:first-child {
-    background: #6ef4df;
+    /* background: #6ef4df; */
 }
 
 .Group__table tbody tr:nth-child(2) {
-    background: #00d5ff;
+    /* background: #00d5ff; */
 }
 
 .Group__table tbody td img {
-    width: 100%;
-    max-width: 20px;
+    width: 25px;
     height: 15px;
+    margin: 0 10px;
+    border: 1px solid rgba(128, 128, 128, 0.733);
 }
 
 input {
@@ -55,7 +103,7 @@ input {
     border-radius: 20px;
     outline: 0;
     font-weight: bold;
-    width: 20px;
+    width: 30px;
     border: 2px solid RGB(11, 95, 145);
 }
 

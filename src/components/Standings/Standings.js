@@ -10,11 +10,14 @@ const TeamRow = ({ team }) => {
   return (
     <tr>
       <td>
-        <img src={team.flag} alt="team.flag" /> <span>{team.name}</span>
+        <img src={team.flag} alt="team.flag"/><span>{team.name}</span>
       </td>
       <td><input type="number" min="0" max="3" placeholder="0" /></td>
-      <td><input type="number" min="0" max="3" placeholder="0" />-<input type="number" min="0" max="3" placeholder="0" />-<input type="number" min="0" max="3" placeholder="0" /></td>
-      <td><input type="number" placeholder="0" /> - <input type="number" placeholder="0" /></td>
+      <td><input type="number" min="0" max="3" placeholder="0" /></td>
+      <td><input type="number" min="0" max="3" placeholder="0" /></td>
+      <td><input type="number" min="0" max="3" placeholder="0" /></td>
+      <td><input type="number" placeholder="0" /></td>
+      <td><input type="number" placeholder="0" /></td>
       <td><input type="number" placeholder="0" /></td>
       <td><input type="number" min="0" max="12" placeholder="0" /></td>
     </tr>
@@ -54,13 +57,22 @@ class Standings extends Component {
                     <tr>
                       <th>Team</th>
                       <th>
-                        <abbr title="Played">Pld</abbr>
+                        <abbr title="Matches Played">MP</abbr>
                       </th>
                       <th>
-                        <abbr title="Wins - Draws - Lost">W-D-L</abbr>
+                        <abbr title="Wins">W</abbr>
                       </th>
                       <th>
-                        <abbr title="Goals">G</abbr>
+                        <abbr title="Draws">D</abbr>
+                      </th>
+                      <th>
+                        <abbr title="Lost">L</abbr>
+                      </th>
+                      <th>
+                        <abbr title="Goals">GF</abbr>
+                      </th>
+                      <th>
+                        <abbr title="Goals">GA</abbr>
                       </th>
                       <th>
                         <abbr title="Goal difference">GD</abbr>
@@ -70,7 +82,7 @@ class Standings extends Component {
                       </th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className="Group__table-body">
                     {groupTeams.map(teamId => (
                       <TeamRow key={teamId} team={teams[teamId - 1]} />
                     ))}

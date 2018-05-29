@@ -1,9 +1,10 @@
 .Group {
     margin: 5px;
     background: white;
-    min-width: calc(25% - 10px);
-    /* max-width: calc(50% - 10px); */
-    border: 2px solid gray;
+    min-width: 500px;
+    max-width: calc(50% - 10px);
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .Group_title {
