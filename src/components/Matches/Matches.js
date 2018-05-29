@@ -73,8 +73,7 @@ class Matches extends Component {
     return (
       <div className="Matches">
         <div className="Groups">
-          {
-            Object.keys(matchesObj).map((matchday, index) => {
+          {Object.keys(matchesObj).map((matchday, index) => {
               return(
                 <Group key={index} name={`Group Stage - MatchDay ${matchday} of 3`}>
                   {
@@ -88,7 +87,7 @@ class Matches extends Component {
                         }
                         date={
                           new Date(match.date).getDate() + '/' +
-                          new Date(match.date).getMonth() + ' ' +
+                          new Date(match.date).getMonth() + ' ' +  
                           new Date(match.date).getHours() + ':00'
                         }
                         stadium={stadiums[match.stadium - 1]}/>
@@ -97,8 +96,7 @@ class Matches extends Component {
                   }
                 </Group>
               )
-            })
-          }
+            })}
         </div>
       </div>
     );

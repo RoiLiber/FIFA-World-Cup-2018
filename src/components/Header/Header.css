@@ -32,6 +32,27 @@
     left: -35px;
 }
 
+.Header_Top img {
+    border-radius: 50%;
+}
+
+@keyframes bouncingBall {
+    0% {
+        transform: translatey(0);
+        box-shadow: 0px 50px 30px 10px rgba(0, 0, 0, 0.5);
+    }
+    90%,
+    100% {
+        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+    }
+    90% {
+        transform: translatey(15px);
+    }
+    100% {
+        transform: translatey(15px) scaley(0.8);
+    }
+}
+
 .Boll {
     display: flex;
     margin: 10px 10px;
@@ -43,16 +64,40 @@
     animation: App-logo-spin infinite 10s linear;
 }
 
-.Boll2 {
-    position: absolute;
-    right: 70px;
+.Boll1 {
     animation: App-logo-spin infinite 20s linear;
+    box-shadow: none;
+    box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.5);
+}
+
+.Boll2 {
+    top: -5px;
+    box-shadow: 70px 100px 15px rgba(0, 0, 0, 0.5);
+    right: 100px;
+    animation: bouncingBall 2s infinite linear;
+    animation-direction: alternate;
+    transform-origin: bottom;
+    animation-fill-mode: both;
 }
 
 .Boll3 {
-    position: absolute;
-    right: 140px;
-    animation: App-logo-spin infinite 30s linear;
+    animation: bouncingBall 2s infinite linear;
+    /* animation-direction: alternate; */
+    transform-origin: bottom;
+    /* animation-fill-mode: both; */
+    right: 200px;
+    animation: App-logo-spin infinite 10s linear;
+    box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.5);
+}
+
+.Boll4 {
+    animation: bouncingBall 2s infinite linear;
+    /* animation-direction: alternate; */
+    transform-origin: bottom;
+    /* animation-fill-mode: both; */
+    right: 280px;
+    animation: App-logo-spin infinite 20s linear;
+    box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.5);
 }
 
 .Header_Nav {

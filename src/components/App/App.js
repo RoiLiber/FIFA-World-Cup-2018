@@ -48,7 +48,7 @@ class App extends Component {
                   render={() => <Matches {...this.state} />}
                 />
                 <Route
-                  path="/standings"
+                  path="/Standings"
                   render={() => <Standings {...this.state} />}
                 />
                 <Route
