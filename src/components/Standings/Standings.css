@@ -3,12 +3,17 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 30px;
 }
 
 .Groups {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.Standings .Groups .Group {
+    min-width: 700px;
 }
 
 .Group__table {
@@ -80,15 +85,6 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    
-}
-
-.Group__table tbody tr:first-child {
-    /* background: #6ef4df; */
-}
-
-.Group__table tbody tr:nth-child(2) {
-    /* background: #00d5ff; */
 }
 
 .Group__table tbody td img {
@@ -111,4 +107,17 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
 }
+
+.Group__table + .Matches {
+    /* display: none; */
+}
+
+.Standings .Groups .Group .Group_title {
+    cursor: pointer;
+}
+
+.Standings .Groups .Group .Group_title:active +.Group__table +.Matches {
+    display: flex;
+}
+
 

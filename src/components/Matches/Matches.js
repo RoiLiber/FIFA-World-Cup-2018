@@ -2,39 +2,10 @@ import React, { Component } from "react";
 
 // Components
 import Group from "../Group/Group";
+import Match from "../Match/Match";
 
 // styles
 import "./Matches.css";
-
-
-const Match = ({ teams , date, stadium, city }) => {
-  return (
-    <div className="MatchWrapper">
-      <div className="Match">
-        <div className="Match__Teams">
-          <div className="Team__Score">
-            <img src={teams[0].flag} alt="team.name"/> 
-            <span>{teams[0].name}</span> 
-            <input type="number" min="0" max="9" placeholder="0"/>
-          </div> 
-          <div className="Team__Score">
-            <img src={teams[1].flag} alt="team.name"/>
-            <span>{teams[1].name}</span> 
-            <input type="number" min="0" max="9" placeholder="0"/> 
-          </div>      
-        </div>
-        <div className="Match__Details">
-          <span>{date}</span>
-          <span>{stadium.name}</span>
-          <span>{stadium.city}</span>    
-        </div>
-      </div>
-      <div className="StadiumImg">
-          <img src={stadium.image} alt="stadiumImg"/>
-      </div>
-    </div>
-  );
-};
 
 
 class Matches extends Component {
@@ -43,6 +14,14 @@ class Matches extends Component {
     // get matches name and create matches in group array
     
     return this.props.groups[group].matches.map(
+      match => match
+    );
+  }
+
+  mapMatchesInRound(round) {
+    // get matches name and create matches in group array
+
+    return this.props.knockout[round].matches.map(
       match => match
     );
   }
@@ -66,11 +45,11 @@ class Matches extends Component {
 
     return groupBy(matches, 'matchday');
   }
-
+  
   render() {
-    const { groups, teams, stadiums, isLoading } = this.props;
+    const { groups, teams, stadiums, knockout, isLoading } = this.props;
     const matchesObj = !isLoading && this.getAllMatchesByGroup();
-    // console.log(matchesObj)
+    console.log(matchesObj)
     if (isLoading) {
       return <span className="Loading">Loading . . .</span>;
     }
@@ -81,8 +60,7 @@ class Matches extends Component {
           {Object.keys(matchesObj).map((matchday, index) => {
               return(
                 <Group key={index} name={`Group Stage - MatchDay ${matchday} of 3`}>
-                  {
-                    matchesObj[matchday].map(match => {
+                  {matchesObj[matchday].map(match => {
                       return (
                         <Match key={match.name} 
                           teams={[teams[match.home_team - 1],
@@ -98,6 +76,17 @@ class Matches extends Component {
                       )
                     })
                   }
+                </Group>
+              )
+            })}
+        </div>
+        <div className="Groups">
+          {Object.keys(knockout).map((round, index) => {
+            // console.log(knockout)
+            // debugger
+              return(
+                <Group key={index} name={`Knockout Stage - MatchDay - ${round}`}>
+                 
                 </Group>
               )
             })}

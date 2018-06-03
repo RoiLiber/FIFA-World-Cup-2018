@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+
 //components
 import Header from "../Header/Header";
 
@@ -17,7 +18,10 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { isLoading: true };
+    this.state = {
+       isLoading: true
+       
+      };
   }
 
   componentDidMount() {
