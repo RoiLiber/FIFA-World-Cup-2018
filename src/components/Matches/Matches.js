@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 // Components
 import Group from "../Group/Group";
@@ -49,15 +51,15 @@ class Matches extends Component {
   render() {
     const { groups, teams, stadiums, knockout, isLoading } = this.props;
     const matchesObj = !isLoading && this.getAllMatchesByGroup();
-    console.log(matchesObj)
+    // console.log(matchesObj)
     if (isLoading) {
       return <span className="Loading">Loading . . .</span>;
     }
-
     return (
       <div className="Matches">
         <div className="Groups">
           {Object.keys(matchesObj).map((matchday, index) => {
+            
               return(
                 <Group key={index} name={`Group Stage - MatchDay ${matchday} of 3`}>
                   {matchesObj[matchday].map(match => {
@@ -82,10 +84,8 @@ class Matches extends Component {
         </div>
         <div className="Groups">
           {Object.keys(knockout).map((round, index) => {
-            // console.log(knockout)
-            // debugger
               return(
-                <Group key={index} name={`Knockout Stage - MatchDay - ${round}`}>
+                <Group key={index} name={`Knockout Stage - MatchDay - ${knockout[round].name}`}>
                  
                 </Group>
               )
@@ -96,4 +96,13 @@ class Matches extends Component {
   }
 }
 
-export default Matches;
+function mapStateToProps(state) {
+  return {
+    stadiums: state.stadiums,
+    teams: state.teams,
+    groups: state.groups,
+    knockout: state.knockout
+  };
+}
+
+export default connect(mapStateToProps)(Matches);

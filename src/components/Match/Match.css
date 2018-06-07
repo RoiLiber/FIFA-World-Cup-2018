@@ -99,3 +99,12 @@
         height: 200px;
     }
 }
+
+.team__matchScore {
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* width: 10px; */
+    font-size: 15px;
+    font-weight: bold;
+}

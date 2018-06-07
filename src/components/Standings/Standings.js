@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 
 //Components
 import Group from "../Group/Group";
@@ -8,31 +13,52 @@ import Match from "../Match/Match";
 import "./Standings.css";
 
 
-const TeamRow = ({ team, teamPoints }) => {
-  return (
+class TeamRow extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      teamPoints: {
+        MP: 0,
+        W: 0,
+        D: 0,
+        L: 0,
+        GF: 0,
+        GA: 0,
+        GD: 0,
+        Pts: 0,
+      }
+    };
+  }
+
+
+  render() {
+    const { team } = this.props;
+
+    return (
     <tr>
       <td>
         <img src={team.flag} alt="team.flag"/><span>{team.name}</span>
       </td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td><input type="number" min="0" max="12" placeholder="0" /></td>
+      <td>{this.state.teamPoints.MP}</td>
+      <td>{this.state.teamPoints.W}</td>
+      <td>{this.state.teamPoints.D}</td>
+      <td>{this.state.teamPoints.L}</td>
+      <td>{this.state.teamPoints.GF}</td>
+      <td>{this.state.teamPoints.GA}</td>
+      <td>{this.state.teamPoints.GD}</td>
+      <td>{this.state.teamPoints.Pts}</td>
     </tr>
   );
-};
+
+  }
+}
+
+// export default TeamRow;
+
+
 
 class Standings extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
 
   mapTeamsInGroup(group) {
     // get teams id and create teams in group array
@@ -47,7 +73,7 @@ class Standings extends Component {
 
   render() {
     const { groups, teams, stadiums, isLoading } = this.props;
-    
+
     if (isLoading) {
       return <span className="Loading">Loading . . .</span>;
     }
@@ -60,10 +86,13 @@ class Standings extends Component {
 
             return (
               <Group key={index} name={groups[group].name}>
+              
                 <table className="Group__table">
                   <thead className="Group__table-head">
                     <tr>
-                      <th>Team</th>
+                      <th>
+                        <NavLink exact to="/Standings/Matches">Teames Matches</NavLink>
+                      </th>
                       <th>
                         <abbr title="Matches Played">MP</abbr>
                       </th>
@@ -100,7 +129,9 @@ class Standings extends Component {
                 <div className="Matches">
                   <div className="Groups">
                     {groups[group].matches.map(match => (
-                      <Match
+                      <Route
+                        path="/Standings/Matches"
+                        render={() => <Match
                         key={match.name}
                         teams={[
                           teams[match.home_team - 1],
@@ -113,6 +144,8 @@ class Standings extends Component {
                         }
                         stadium= {stadiums[match.stadium - 1]}
                         city= {stadiums[match.stadium - 1]}
+                        {...this.state}
+                      />}
                       />
                     ))}
                   </div>
@@ -126,4 +159,13 @@ class Standings extends Component {
   }
 }
 
-export default Standings;
+function mapStateToProps(state) {
+  return {
+    stadiums: state.stadiums,
+    teams: state.teams,
+    groups: state.groups,
+    knockout: state.knockout
+  };
+}
+
+export default connect(mapStateToProps)(Standings);

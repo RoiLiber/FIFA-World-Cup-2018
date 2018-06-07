@@ -120,4 +120,20 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
 }
 
+.Standings a {
+    color: RGB(11, 95, 145);
+    font-size: 15px;
+    text-decoration: none;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+.Standings .Groups .Matches {
+    margin: 0;
+}
+
+.Standings .Groups .Group {
+    margin: 13px 5px;
+}
 

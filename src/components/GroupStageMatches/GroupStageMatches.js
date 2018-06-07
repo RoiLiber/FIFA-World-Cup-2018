@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 // Components
 import Group from "../Group/Group";
@@ -47,4 +49,13 @@ class GroupStageMatches extends Component {
   }
 }
 
-export default GroupStageMatches;
+function mapStateToProps(state) {
+  return {
+    stadiums: state.stadiums,
+    teams: state.teams,
+    groups: state.groups,
+    knockout: state.knockout
+  };
+}
+
+export default connect(mapStateToProps)(GroupStageMatches);
