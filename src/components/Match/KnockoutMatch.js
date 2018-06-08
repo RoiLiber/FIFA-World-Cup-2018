@@ -2,13 +2,9 @@ import React, { Component } from "react";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-//actions
-import { selectHomeTeamScore } from "../../actions/index";
-
 //styles
 import "./Match.css";
 import Matches from "../Matches/Matches";
-
 
 class StadiumImg extends Component {
   render() {
@@ -21,8 +17,8 @@ class StadiumImg extends Component {
   }
 }
 
-class Match extends Component {
-    
+class KnockoutMatch extends Component {
+
     constructor() {
         super()
         this.state = {
@@ -35,24 +31,22 @@ class Match extends Component {
             isHidden: !this.state.isHidden
         })
     }
-  
-    render() {
-    const { date, hours, stadium, hometeam, awayteam, match, day } = this.props;
-     
 
+    render() {
+    const { date, hours, stadium, knockouthometeam, knockoutawayteam, day } = this.props;
     return (
         <div className="MatchWrapper">
             <div className="Match">
                 <div className="Match__Teams">
                 <div className="Team__Score">
-                    <img src={hometeam.flag} alt="team.name"/> 
-                    <span>{hometeam.name}</span>
+                    {/* <img src={team[0].flag} alt="team.name"/>  */}
+                    <span>{knockouthometeam}</span>
                     <span className="team__matchScore"></span>
-                    <input type="number" min="0" max="9" onChange={() => this.props.selectHomeTeamScore(match)}/>
+                    <input type="number" min="0" max="9"/>
                 </div> 
                 <div className="Team__Score">
-                    <img src={awayteam.flag} alt="team.name"/>
-                    <span>{awayteam.name}</span>
+                    {/* <img src={team[1].flag} alt="team.name"/> */}
+                    <span>{knockoutawayteam}</span>
                     <span className="team__matchScore"></span>
                     <input type="number" min="0" max="9"/> 
                 </div>      
@@ -64,8 +58,7 @@ class Match extends Component {
                     <span>{hours}</span>
                 </span>
                 <span className="stadiumName" onClick={this.toggleHidden.bind(this)}>{stadium.name}</span>
-                <span className="stadiumCity">{stadium.city}</span>
-                {/* <span>match name:{this.props.matchhomescore.home_result}</span>    */}
+                <span className="stadiumCity">{stadium.city}</span>    
                 </div>
             </div>
             {!this.state.isHidden && <StadiumImg key={stadium.name} stadium={stadium}/>}
@@ -79,13 +72,10 @@ function mapStateToProps(state) {
         stadiums: state.stadiums,
         teams: state.teams,
         groups: state.groups,
-        knockout: state.knockout,
-        matchhomescore: state.activeMatch
+        knockout: state.knockout
     };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({selectHomeTeamScore: selectHomeTeamScore}, dispatch)
-}
+export default connect(mapStateToProps)(KnockoutMatch);
 
-export default connect(mapStateToProps ,mapDispatchToProps)(Match);
+

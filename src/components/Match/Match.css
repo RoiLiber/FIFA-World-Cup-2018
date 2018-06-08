@@ -10,7 +10,7 @@
 }
 
 .Match {
-    border: 1px solid rgba(128, 128, 128, 0.479);
+    border: 1px solid rgba(128, 128, 128, 0.164);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,11 +22,11 @@
 }
 
 .StadiumImg {
+    display: flex;
     width: 100%;
     height: 200px;
-    z-index: 5;
-    display: none;
-    border: 5px solid rgba(128, 128, 128, 0.479);
+    z-index: 1;
+    border: 5px ridge rgba(128, 128, 128, 0.555);
 }
 
 .StadiumImg img {
@@ -34,13 +34,8 @@
     width: 100%;
 }
 
-.Match:hover+.StadiumImg {
-    display: flex;
-    animation: Img-Opening 1s linear;
-}
-
 .Match:hover {
-    background-color: rgb(247, 240, 240);
+    background-color: rgba(247, 240, 240, 0.548);
 }
 
 .Match__Teams {
@@ -63,7 +58,7 @@
     width: 25px;
     height: 15px;
     margin: 0 10px;
-    border: 1px solid rgba(128, 128, 128, 0.733);
+    border: 1px ridge rgba(128, 128, 128, 0.733);
 }
 
 .Team__Score input {
@@ -80,15 +75,57 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    padding: 0 10px 0 20px;
+    border-left: 0.5px outset rgba(128, 128, 128, 0.158);
 }
 
 .Match__Details span {
-    width: 100%;
     display: flex;
-    border-left: 1px solid gray;
     font-size: 15px;
     margin: 3px 0;
     padding: 0 0 0 10px;
+}
+
+.date {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.date span {
+    font-weight: bold;
+    display: flex;
+    padding: 0;
+    width: 30%;
+}
+
+.date .day {
+    font-weight: normal;
+    width: 22%;
+}
+
+span.stadiumName {
+    color: RGB(11, 95, 145);
+    display: flex;
+    min-width: 100px;
+    cursor: pointer;
+    margin: 0;
+    padding: 3px 10px;
+    margin-bottom: 5px;
+    box-shadow: 0 3px 5px -1px #555;
+    border-radius: 7px;
+    border: 2px solid rgba(128, 128, 128, 0.226);
+}
+
+span.stadiumName:hover {
+    background-color: rgba(128, 128, 128, 0.226);
+}
+
+span.stadiumCity {
+    color: RGB(11, 95, 145);
+    margin: 0;
+    padding: 3px 10px;
+    width: 60%;
 }
 
 @keyframes Img-Opening {
@@ -108,3 +145,4 @@
     font-size: 15px;
     font-weight: bold;
 }
+

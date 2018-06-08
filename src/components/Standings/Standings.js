@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
 
 //Components
 import Group from "../Group/Group";
@@ -15,23 +14,6 @@ import "./Standings.css";
 
 class TeamRow extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      teamPoints: {
-        MP: 0,
-        W: 0,
-        D: 0,
-        L: 0,
-        GF: 0,
-        GA: 0,
-        GD: 0,
-        Pts: 0,
-      }
-    };
-  }
-
-
   render() {
     const { team } = this.props;
 
@@ -40,14 +22,14 @@ class TeamRow extends Component {
       <td>
         <img src={team.flag} alt="team.flag"/><span>{team.name}</span>
       </td>
-      <td>{this.state.teamPoints.MP}</td>
-      <td>{this.state.teamPoints.W}</td>
-      <td>{this.state.teamPoints.D}</td>
-      <td>{this.state.teamPoints.L}</td>
-      <td>{this.state.teamPoints.GF}</td>
-      <td>{this.state.teamPoints.GA}</td>
-      <td>{this.state.teamPoints.GD}</td>
-      <td>{this.state.teamPoints.Pts}</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
     </tr>
   );
 
@@ -91,7 +73,8 @@ class Standings extends Component {
                   <thead className="Group__table-head">
                     <tr>
                       <th>
-                        <NavLink exact to="/Standings/Matches">Teames Matches</NavLink>
+                        <NavLink exact to="/Standings/">Teames /</NavLink>
+                        <NavLink exact to="/Standings/Matches">/ Teames Matches</NavLink>
                       </th>
                       <th>
                         <abbr title="Matches Played">MP</abbr>
@@ -128,26 +111,35 @@ class Standings extends Component {
                 {/* Group stage matches div  */}
                 <div className="Matches">
                   <div className="Groups">
-                    {groups[group].matches.map(match => (
-                      <Route
-                        path="/Standings/Matches"
-                        render={() => <Match
-                        key={match.name}
-                        teams={[
-                          teams[match.home_team - 1],
-                          teams[match.away_team - 1]
-                        ]}
-                        date = {
+                    <Router>
+                      <React.Fragment>
+                      <Switch>
+                        <Route
+                          exact
+                          path="/Standings/Matches"
+                          render={() => groups[group].matches.map(match => (
+                          <Match
+                          key={match.name}
+                          hometeam={teams[match.home_team - 1]}
+                          awayteam={teams[match.away_team - 1]}
+                          day={match.day}
+                          date = {
                             new Date(match.date).getDate() + '/' +
-                            new Date(match.date).getMonth() + ' ' + 
-                            new Date(match.date).getHours() + ':00'   
-                        }
-                        stadium= {stadiums[match.stadium - 1]}
-                        city= {stadiums[match.stadium - 1]}
-                        {...this.state}
-                      />}
-                      />
-                    ))}
+                            (new Date(match.date).getMonth() + 1)
+                          }
+                          hours = {
+                            new Date(match.date).getHours() + ':00'
+                          }
+                          stadium= {stadiums[match.stadium - 1]}
+                          />))}
+                        />
+                        <Route
+                          path = "/Standings/"
+                          render={() => <div></div>}
+                        />
+                      </Switch>
+                      </React.Fragment>
+                    </Router>
                   </div>
                 </div>
               </Group>

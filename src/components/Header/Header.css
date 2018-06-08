@@ -8,6 +8,7 @@
     padding: 10px 10px 0 10px;
     box-shadow: 0 1px 12px -3px rgba(0, 0, 0, 0.925);
     background-color: RGB(11, 95, 145);
+    z-index: 2;
 }
 
 .Header_Top {

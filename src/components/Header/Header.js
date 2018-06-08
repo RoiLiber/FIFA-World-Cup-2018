@@ -15,8 +15,8 @@ const Header = () => (
         <span className="Header_Title">FIFA World Cup 2018 - Russia</span>
         <img className="Boll Boll1" src={boll} alt="ball" />
         <img className="Boll Boll2" src={boll} alt="ball" />
-        <img className="Boll Boll3" src={boll} alt="ball" />
-        <img className="Boll Boll4" src={boll} alt="ball" />
+        {/* <img className="Boll Boll3" src={boll} alt="ball" /> */}
+        {/* <img className="Boll Boll4" src={boll} alt="ball" /> */}
     </div>
     <div className="Header_Nav">
         <NavLink exact to="/">Matches</NavLink>
