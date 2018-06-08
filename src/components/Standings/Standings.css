@@ -1,15 +1,16 @@
 .Standings {
-    padding: 35px 20px;
+    padding: 0 20px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
-.Groups {
+.Standings .Groups {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+
 }
 
 .Standings .Groups .Group {
