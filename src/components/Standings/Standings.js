@@ -42,6 +42,19 @@ class TeamRow extends Component {
 
 class Standings extends Component {
 
+  constructor() {
+    super()
+    this.state = {
+      isHidden: true
+    }
+  }
+
+  toggleHidden() {
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
+  }
+
   mapTeamsInGroup(group) {
     // get teams id and create teams in group array
     const teamsInGroup = this.props.groups[group].matches.map(
@@ -73,8 +86,7 @@ class Standings extends Component {
                   <thead className="Group__table-head">
                     <tr>
                       <th>
-                        <NavLink exact to="/Standings/">Teames /</NavLink>
-                        <NavLink exact to="/Standings/Matches">/ Teames Matches</NavLink>
+                        <span className="ThisGroup__StageMatches" onClick={this.toggleHidden.bind(this)}>// Teames Matches //</span>
                       </th>
                       <th>
                         <abbr title="Matches Played">MP</abbr>
@@ -110,37 +122,24 @@ class Standings extends Component {
                 </table>
                 {/* Group stage matches div  */}
                 <div className="Matches">
-                  <div className="Groups">
-                    <Router>
-                      <React.Fragment>
-                      <Switch>
-                        <Route
-                          exact
-                          path="/Standings/Matches"
-                          render={() => groups[group].matches.map(match => (
-                          <Match
-                          key={match.name}
-                          hometeam={teams[match.home_team - 1]}
-                          awayteam={teams[match.away_team - 1]}
-                          day={match.day}
-                          date = {
-                            new Date(match.date).getDate() + '/' +
-                            (new Date(match.date).getMonth() + 1)
-                          }
-                          hours = {
-                            new Date(match.date).getHours() + ':00'
-                          }
-                          stadium= {stadiums[match.stadium - 1]}
-                          />))}
-                        />
-                        <Route
-                          path = "/Standings/"
-                          render={() => <div></div>}
-                        />
-                      </Switch>
-                      </React.Fragment>
-                    </Router>
-                  </div>
+                  {!this.state.isHidden && <div className="Groups">
+                    {groups[group].matches.map(match => (
+                      <Match
+                        key={match.name}
+                        hometeam={teams[match.home_team - 1]}
+                        awayteam={teams[match.away_team - 1]}
+                        day={match.day}
+                        date = {
+                          new Date(match.date).getDate() + '/' +
+                          (new Date(match.date).getMonth() + 1)
+                        }
+                        hours = {
+                          new Date(match.date).getHours() + ':00'
+                        }
+                        stadium= {stadiums[match.stadium - 1]}
+                      />
+                    ))}
+                  </div>}
                 </div>
               </Group>
             );

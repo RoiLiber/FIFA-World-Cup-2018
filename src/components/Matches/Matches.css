@@ -6,6 +6,12 @@
     max-width: 1000px;
 }
 
+.Matches .Groups {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .Matches {
     margin-top: 21px;
 }
