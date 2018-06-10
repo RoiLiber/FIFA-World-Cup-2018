@@ -33,7 +33,7 @@ class KnockoutMatch extends Component {
     }
 
     render() {
-    const { date, hours, stadium, knockouthometeam, knockoutawayteam, day } = this.props;
+    const { date, hours, stadium, knockouthometeam, knockoutawayteam, day, match } = this.props;
     return (
         <div className="MatchWrapper">
             <div className="Match">
@@ -41,13 +41,13 @@ class KnockoutMatch extends Component {
                 <div className="Team__Score">
                     {/* <img src={team[0].flag} alt="team.name"/>  */}
                     <span>{knockouthometeam}</span>
-                    <span className="team__matchScore"></span>
+                    <span className="Scored">Scored: {match.home_result}</span>
                     <input type="number" min="0" max="9"/>
                 </div> 
                 <div className="Team__Score">
                     {/* <img src={team[1].flag} alt="team.name"/> */}
                     <span>{knockoutawayteam}</span>
-                    <span className="team__matchScore"></span>
+                    <span className="Scored">Scored: {match.away_result}</span>
                     <input type="number" min="0" max="9"/> 
                 </div>      
                 </div>

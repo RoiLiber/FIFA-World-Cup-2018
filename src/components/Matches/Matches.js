@@ -92,7 +92,8 @@ class Matches extends Component {
                 <Group key={index} name={`Knockout Stage - MatchDay ${knockout[round].matchday} - ${knockout[round].name}`}>
                   {knockout[round].matches.map(match => {
                     return (
-                      <KnockoutMatch key={match.name} 
+                      <KnockoutMatch key={match.name}
+                      match={match}
                       knockouthometeam = {match.home_team}
                       knockoutawayteam = {match.away_team}
                       day={match.day}

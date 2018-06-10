@@ -54,15 +54,13 @@ class Match extends Component {
                 <div className="Team__Score">
                     <img src={hometeam.flag} alt="team.name"/> 
                     <span>{hometeam.name}</span>
-                    <span className="team__matchScore"></span>
-                    <span>score: {this.props.matchTeamResult}</span>
+                    <span className="Scored">Scored: {match.home_result}{this.props.matchTeamResult}</span>
                     <input type="number" id="homeTeam" ref="homeTeam" min="0" max="9" onChange={this.props.chengHomeTeamResult}/>
                 </div> 
                 <div className="Team__Score">
                     <img src={awayteam.flag} alt="team.name"/>
                     <span>{awayteam.name}</span>
-                    <span className="team__matchScore"></span>
-                    <span>score: {this.props.matchTeamResult}</span>
+                    <span className="Scored">Scored: {match.away_result}{this.props.matchTeamResult}</span>
                     <input type="number" id="awayTeam" ref="awayTeam" min="0" max="9" onChange={this.props.chengAwayTeamResult}/> 
                 </div>      
                 </div>

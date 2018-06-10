@@ -138,12 +138,10 @@ span.stadiumCity {
     }
 }
 
-.team__matchScore {
+span.Scored {
     display: flex;
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* width: 10px; */
-    font-size: 15px;
+    font-size: 10px;
+    padding: 0 5px 0 0;
     font-weight: bold;
 }
 

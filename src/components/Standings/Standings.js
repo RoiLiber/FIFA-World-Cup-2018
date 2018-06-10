@@ -13,12 +13,6 @@ import TeamRow from "../TeamRow/TeamRow";
 import "./Standings.css";
 
 
-
-
-
-
-
-
 class Standings extends Component {
 
   constructor() {
@@ -115,6 +109,7 @@ class Standings extends Component {
                     {groups[group].matches.map(match => (
                       <Match
                         key={match.name}
+                        match={match}
                         hometeam={teams[match.home_team - 1]}
                         awayteam={teams[match.away_team - 1]}
                         day={match.day}
