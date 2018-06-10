@@ -57,8 +57,8 @@ class KnockoutMatch extends Component {
                     <span>{date}</span>
                     <span>{hours}</span>
                 </span>
-                <span className="stadiumName" onClick={this.toggleHidden.bind(this)}>{stadium.name}</span>
-                <span className="stadiumCity">{stadium.city}</span>    
+                <span className="stadiumCity">{stadium.city}</span> 
+                <span className="stadiumName" onClick={this.toggleHidden.bind(this)}>{stadium.name}</span>   
                 </div>
             </div>
             {!this.state.isHidden && <StadiumImg key={stadium.name} stadium={stadium}/>}

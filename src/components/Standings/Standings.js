@@ -12,17 +12,47 @@ import Match from "../Match/Match";
 import "./Standings.css";
 
 
+
+
 class TeamRow extends Component {
 
+  // map the group matches and return 3 matches for each team
+  mapTeamMatchesFromGroupMatches(team, groupMatches) {
+    let teamMatches = [];
+    let mp = [];
+    console.log(groupMatches)
+    groupMatches.map((Match, index) => {
+      if (groupMatches[index].home_team == team.id) {
+        teamMatches.push(groupMatches[index]); 
+      }
+      if (groupMatches[index].away_team == team.id) {
+        teamMatches.push(groupMatches[index]);
+      }
+      
+      teamMatches.map((match, index) => {
+        if (teamMatches[index].home_result !== null) {
+          mp.push(teamMatches[index]);
+        }
+      })
+    })
+    
+    // console.log(mp)
+    return mp.length;
+  }
+
+  
+
+
   render() {
-    const { team } = this.props;
+    const { team, groupMatches } = this.props;
+    
 
     return (
     <tr>
       <td>
         <img src={team.flag} alt="team.flag"/><span>{team.name}</span>
       </td>
-      <td>0</td>
+      <td>{this.mapTeamMatchesFromGroupMatches(team, groupMatches)}</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -116,7 +146,10 @@ class Standings extends Component {
                   </thead>
                   <tbody className="Group__table-body">
                     {groupTeams.map((teamId) => (
-                      <TeamRow key={teamId} team={teams[teamId - 1]} />
+                      <TeamRow key={teamId} 
+                        team={teams[teamId - 1]}
+                        groupMatches={groups[group].matches}
+                      />
                     ))}
                   </tbody>
                 </table>

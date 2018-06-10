@@ -62,33 +62,29 @@ class Matches extends Component {
       <div className="Matches">
         <div className="Groups">
           {Object.keys(matchesObj).map((matchday, index) => {
-            
-              return(
-                <Group key={index} name={`Group Stage - MatchDay ${matchday} of 3`}>
-                  {matchesObj[matchday].map(match => {
-                    
-                      return (
-                        <Match key={match.name}
-                          match={match}
-                          hometeam={teams[match.home_team - 1]}
-                          awayteam={teams[match.away_team - 1]}
-                          day={match.day} 
-                          date={
-                            new Date(match.date).getDate() + '/' +
-                            (new Date(match.date).getMonth() + 1)
-                          }
-                          hours = {
-                            new Date(match.date).getHours() + ':00'
-                          }
-                          stadium={stadiums[match.stadium - 1]}
-                          
-                        />
-                      )
-                    })
-                  }
-                </Group>
-              )
-            })}
+            return(
+              <Group key={index} name={`Group Stage - MatchDay ${matchday} of 3`}>
+                {matchesObj[matchday].map(match => {
+                  return (
+                    <Match key={match.name}
+                      match={match}
+                      hometeam={teams[match.home_team - 1]}
+                      awayteam={teams[match.away_team - 1]}
+                      day={match.day} 
+                      date={
+                        new Date(match.date).getDate() + '/' +
+                        (new Date(match.date).getMonth() + 1)
+                      }
+                      hours = {
+                        new Date(match.date).getHours() + ':00'
+                      }
+                      stadium={stadiums[match.stadium - 1]}
+                    />
+                  )
+                })}
+              </Group>
+            )
+          })}
         </div>
         <div className="Groups">
           {Object.keys(knockout).map((round, index) => {

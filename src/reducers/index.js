@@ -7,14 +7,14 @@ import groupsReducer from './reduser-groups';
 import knockoutReducer from './reduser-knockout';
 
 //reducers-action
-import activeMatchReducer from './reducer-active-match';
+import activeMatchResultReducer from './reducer-active-match-result';
 
 const allReducers = combineReducers({
     stadiums: stadiumsReducer,
     teams: teamsReducer,
     groups: groupsReducer,
     knockout: knockoutReducer,
-    activeMatch: activeMatchReducer
+    activeMatchResult: activeMatchResultReducer
 });
 
 export default allReducers;
