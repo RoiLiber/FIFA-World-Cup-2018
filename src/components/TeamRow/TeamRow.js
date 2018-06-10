@@ -24,7 +24,7 @@ class TeamRow extends Component {
 
     return teamMatches;
   }
-  //get the team matches and return arr of the played 
+  //get the team matches and return arr of the matches played 
   teamPlayedMatches(teamMatchesArr) {
     const mp = [];
 
@@ -83,7 +83,47 @@ class TeamRow extends Component {
     return draw;
   }
 
+  teamGF(team, teamPlayedMatchesArr) {
+    let gf = 0;
 
+    Object.keys(teamPlayedMatchesArr).map((match, index) => {
+        if (teamPlayedMatchesArr[index].home_team == team.id) {
+            gf += teamPlayedMatchesArr[index].home_result;
+        }
+        if (teamPlayedMatchesArr[index].away_team == team.id) {
+            gf += teamPlayedMatchesArr[index].away_result;
+        }
+    })
+    return gf;
+  }
+
+  teamGA(team, teamPlayedMatchesArr) {
+    let ga = 0;
+
+    Object.keys(teamPlayedMatchesArr).map((match, index) => {
+        if (teamPlayedMatchesArr[index].home_team == team.id) {
+            ga -= teamPlayedMatchesArr[index].away_result;
+        }
+        if (teamPlayedMatchesArr[index].away_team == team.id) {
+            ga -= teamPlayedMatchesArr[index].home_result;
+        }
+    })
+    return Math.abs(ga);
+  }
+
+  teamPts(teamWinsArr, teamDrawsArr) {
+    let Pts = 0;
+    const winsPts = teamWinsArr.length * 3;
+    const drawPts = teamDrawsArr.length * 1;
+
+    if(winsPts > 0 || drawPts > 0) {
+        Pts += winsPts + drawPts;
+    }
+
+    return Pts;
+  }
+
+  
   render() {
     const { team, groupMatches } = this.props;
     const teamMatchesArr = this.mapTeamMatchesFromGroupMatches(team, groupMatches);
@@ -91,6 +131,10 @@ class TeamRow extends Component {
     const teamWinsArr = this.teamWins(team, teamPlayedMatchesArr);
     const teamLostsArr = this.teamLosts(team, teamPlayedMatchesArr);
     const teamDrawsArr = this.teamDraws(team, teamPlayedMatchesArr);
+    const teamGF = this.teamGF(team, teamPlayedMatchesArr);
+    const teamGA = this.teamGA(team, teamPlayedMatchesArr);
+    const teamGD = teamGF - teamGA;
+    const teamPts = this.teamPts(teamWinsArr, teamDrawsArr);
 
     return (
         <tr>
@@ -101,10 +145,10 @@ class TeamRow extends Component {
         <td>{teamWinsArr.length}</td>
         <td>{teamDrawsArr.length}</td>
         <td>{teamLostsArr.length}</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{teamGF}</td>
+        <td>{teamGA}</td>
+        <td>{teamGD}</td>
+        <td>{teamPts}</td>
         </tr>
     );
   }

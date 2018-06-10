@@ -78,7 +78,7 @@ class Standings extends Component {
                         <abbr title="Draws">D</abbr>
                       </th>
                       <th>
-                        <abbr title="Lost">L</abbr>
+                        <abbr title="Losts">L</abbr>
                       </th>
                       <th>
                         <abbr title="Goals">GF</abbr>
