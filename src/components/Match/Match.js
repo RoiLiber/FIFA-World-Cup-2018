@@ -7,7 +7,6 @@ import { chengeHomeTeamResult, chengeAwayTeamResult } from "../../actions/action
 
 //styles
 import "./Match.css";
-import Matches from "../Matches/Matches";
 
 
 class StadiumImg extends Component {

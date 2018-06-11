@@ -7,9 +7,9 @@ import { connect } from 'react-redux';
 import Header from "../Header/Header";
 
 //routes
-import Matches from "../Matches/Matches";
-import Standings from "../Standings/Standings";
-import GroupStageMatches from "../GroupStageMatches/GroupStageMatches";
+import Matches from "../../containers/Matches/Matches";
+import Standings from "../../containers/Standings/Standings";
+import GroupStageMatches from "../../containers/GroupStageMatches/GroupStageMatches";
 import NotFound from "../NotFound/NotFound";
 
 //styles

@@ -3,8 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 // Components
-import Group from "../Group/Group";
-import Match from "../Match/Match";
+import Group from "../../components/Group/Group";
+import Match from "../../components/Match/Match";
 
 // styles
 import "./GroupStageMatches.css";

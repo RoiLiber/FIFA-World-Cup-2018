@@ -3,9 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 // Components
-import Group from "../Group/Group";
-import Match from "../Match/Match";
-import KnockoutMatch from "../Match/KnockoutMatch";
+import Group from "../../components/Group/Group";
+import Match from "../../components/Match/Match";
+import KnockoutMatch from "../../components/Match/KnockoutMatch";
 
 
 

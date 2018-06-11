@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 //styles
 import "./Match.css";
-import Matches from "../Matches/Matches";
 
 class StadiumImg extends Component {
   render() {
