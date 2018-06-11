@@ -28,6 +28,8 @@ class GroupStageMatches extends Component {
                   <Match
                     key={match.name}
                     match={match}
+                    homeTeamScore={match.home_result}
+                    awayTeamScore={match.away_result}
                     hometeam={teams[match.home_team - 1]}
                     awayteam={teams[match.away_team - 1]}
                     day={match.day}

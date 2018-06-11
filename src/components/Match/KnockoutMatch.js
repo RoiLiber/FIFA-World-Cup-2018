@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-//components
-import ScoreInput from "../ScoreInput/ScoreInput";
-
 //styles
 import "./Match.css";
 import Matches from "../Matches/Matches";
@@ -25,10 +22,39 @@ class KnockoutMatch extends Component {
     constructor(props) {
         super(props)
 
+        this.setHomeScore = this.setHomeScore.bind(this);
+        this.setAwayScore = this.setAwayScore.bind(this);
+
         this.state = {
             isHidden: true,
-            teamResult: null
+            isShow_home: false,
+            isShow_away: false,
+            homeTeamScore: props.match.home_result,
+            awayTeamScore: props.match.away_result
         }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.match.home_result !== this.props.match.home_result || nextProps.match.away_result !== this.props.match.away_result) {
+            this.setState({
+                homeTeamScore: nextProps.match.home_result,
+                awayTeamScore: nextProps.match.home_result
+            })
+        }
+    }
+
+    setHomeScore(e) {
+        this.setState({
+            homeTeamScore: e.target.value,
+            isShow_home: this.state.isHidden
+        });
+    }
+
+    setAwayScore(e) {
+        this.setState({
+            awayTeamScore: e.target.value,
+            isShow_away: this.state.isHidden
+        });
     }
 
     toggleHidden() {
@@ -47,12 +73,32 @@ class KnockoutMatch extends Component {
                 <div className="Team__Score">
                     {/* <img src={team[0].flag} alt="team.name"/>  */}
                     <span>{knockouthometeam}</span>
-                    <ScoreInput teamResult={this.state.teamResult}/>
+                    <span className="Scored">Score:{this.state.homeTeamScore}</span>
+                    {!this.state.isShow_home &&
+                    <input 
+                        type="number" 
+                        id="coure" 
+                        ref="soure" 
+                        min="0" 
+                        max="9" 
+                        value={this.state.homeTeamScore} 
+                        onChange={this.setHomeScore}
+                    />}
                 </div> 
                 <div className="Team__Score">
                     {/* <img src={team[1].flag} alt="team.name"/> */}
                     <span>{knockoutawayteam}</span>
-                    <ScoreInput teamResult={this.state.teamResult}/> 
+                    <span className="Scored">Score:{this.state.awayTeamScore}</span>
+                    {!this.state.isShow_away &&
+                    <input 
+                        type="number" 
+                        id="coure" 
+                        ref="soure" 
+                        min="0" 
+                        max="9" 
+                        value={this.state.awayTeamScore} 
+                        onChange={this.setAwayScore}
+                    />} 
                 </div>      
                 </div>
                 <div className="Match__Details">

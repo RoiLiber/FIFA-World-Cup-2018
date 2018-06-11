@@ -68,6 +68,8 @@ class Matches extends Component {
                   return (
                     <Match key={match.name}
                       match={match}
+                      homeTeamScore={match.home_result}
+                      awayTeamScore={match.away_result}
                       hometeam={teams[match.home_team - 1]}
                       awayteam={teams[match.away_team - 1]}
                       day={match.day} 
@@ -94,6 +96,8 @@ class Matches extends Component {
                     return (
                       <KnockoutMatch key={match.name}
                       match={match}
+                      homeTeamScore={match.home_result}
+                      awayTeamScore={match.away_result}
                       knockouthometeam = {match.home_team}
                       knockoutawayteam = {match.away_team}
                       day={match.day}

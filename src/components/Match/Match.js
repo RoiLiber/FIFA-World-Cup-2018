@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 //actions
-import { chengHomeTeamResult, chengAwayTeamResult } from "../../actions/actions-match-result";
+import { chengeHomeTeamResult, chengeAwayTeamResult } from "../../actions/actions-match-result";
 
 //styles
 import "./Match.css";
@@ -21,7 +21,6 @@ class StadiumImg extends Component {
   }
 }
 
-
 class Match extends Component {
     
     constructor(props) {
@@ -32,6 +31,8 @@ class Match extends Component {
 
         this.state = {
             isHidden: true,
+            isShow_home: false,
+            isShow_away: false,
             homeTeamScore: props.match.home_result,
             awayTeamScore: props.match.away_result
         }
@@ -48,13 +49,15 @@ class Match extends Component {
 
     setHomeScore(e) {
         this.setState({
-            homeTeamScore: e.target.value
+            homeTeamScore: e.target.value,
+            isShow_home: this.state.isHidden
         });
     }
 
     setAwayScore(e) {
         this.setState({
-            awayTeamScore: e.target.value
+            awayTeamScore: e.target.value,
+            isShow_away: this.state.isHidden
         });
     }
 
@@ -74,14 +77,32 @@ class Match extends Component {
                 <div className="Team__Score">
                     <img src={hometeam.flag} alt="team.name"/> 
                     <span>{hometeam.name}</span>
-                    <span>Score:{this.state.homeTeamScore}</span>
-                    <input type="number" id="coure" ref="soure" min="0" max="9" onChange={this.setHomeScore} />
+                    <span className="Scored">Score:{this.state.homeTeamScore}</span>
+                    {!this.state.isShow_home &&
+                    <input 
+                        type="number" 
+                        id="coure" 
+                        ref="soure" 
+                        min="0" 
+                        max="9" 
+                        value={this.state.homeTeamScore} 
+                        onChange={this.setHomeScore} 
+                    />}
                 </div> 
                 <div className="Team__Score">
                     <img src={awayteam.flag} alt="team.name"/>
                     <span>{awayteam.name}</span>
-                    <span>Score:{this.state.awayTeamScore}</span>
-                    <input type="number" id="coure" ref="soure" min="0" max="9" onChange={this.setAwayScore} /> 
+                    <span className="Scored">Score:{this.state.awayTeamScore}</span>
+                    {!this.state.isShow_away &&
+                    <input 
+                        type="number" 
+                        id="coure" 
+                        ref="soure" 
+                        min="0" 
+                        max="9" 
+                        value={this.state.awayTeamScore} 
+                        onChange={this.setAwayScore} 
+                    />}
                 </div>      
                 </div>
                 <div className="Match__Details">
@@ -113,8 +134,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
         {
-            chengHomeTeamResult: chengHomeTeamResult, 
-            chengAwayTeamResult: chengAwayTeamResult
+            chengeHomeTeamResult: chengeHomeTeamResult, 
+            chengeAwayTeamResult: chengeAwayTeamResult
         }, dispatch
     )
 }

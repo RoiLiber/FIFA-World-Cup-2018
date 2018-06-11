@@ -19,7 +19,8 @@ class Standings extends Component {
     super(props)
 
     this.state = {
-      isHidden: true
+      isHidden: true,
+      
     }
   }
 
@@ -56,7 +57,6 @@ class Standings extends Component {
     if (isLoading) {
       return <span className="Loading">Loading . . .</span>;
     }
-
 
     return (
       <div className="Standings">
@@ -110,7 +110,6 @@ class Standings extends Component {
                     ))}
                   </tbody>
                 </table>
-                {/* Group stage matches div  */}
                 <div className="Matches">
                   {!this.state.isHidden && <div className="Groups">
                     {groups[group].matches.map(match => (
