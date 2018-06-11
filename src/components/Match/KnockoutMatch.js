@@ -73,7 +73,7 @@ class KnockoutMatch extends Component {
                 <div className="Team__Score">
                     {/* <img src={team[0].flag} alt="team.name"/>  */}
                     <span>{knockouthometeam}</span>
-                    <span className="Scored">Score:{this.state.homeTeamScore}</span>
+                    <span className="Scored">Score:<span>{this.state.homeTeamScore}</span></span>
                     {!this.state.isShow_home &&
                     <input 
                         type="number" 
@@ -88,7 +88,7 @@ class KnockoutMatch extends Component {
                 <div className="Team__Score">
                     {/* <img src={team[1].flag} alt="team.name"/> */}
                     <span>{knockoutawayteam}</span>
-                    <span className="Scored">Score:{this.state.awayTeamScore}</span>
+                    <span className="Scored">Score:<span>{this.state.awayTeamScore}</span></span>
                     {!this.state.isShow_away &&
                     <input 
                         type="number" 

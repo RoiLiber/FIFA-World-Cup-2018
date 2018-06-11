@@ -127,10 +127,6 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
 }
 
-.Standings .Groups .Group .Group_title {
-    cursor: pointer;
-}
-
 .Standings .Groups .Group .Group_title:active +.Group__table +.Matches {
     display: flex;
 }
@@ -171,6 +167,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .Standings .Groups .Group .Matches .Groups .MatchWrapper .Match .Match__Teams .Team__Score {
     margin: 1px;
+    font-weight: bold;
 }
 
 .Standings .Groups .Group .Matches .Groups .MatchWrapper .Match .Match__Details {

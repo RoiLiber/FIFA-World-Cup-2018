@@ -77,7 +77,7 @@ class Match extends Component {
                 <div className="Team__Score">
                     <img src={hometeam.flag} alt="team.name"/> 
                     <span>{hometeam.name}</span>
-                    <span className="Scored">Score:{this.state.homeTeamScore}</span>
+                    <span className="Scored">Score:<span>{this.state.homeTeamScore}</span></span>
                     {!this.state.isShow_home &&
                     <input 
                         type="number" 
@@ -92,7 +92,7 @@ class Match extends Component {
                 <div className="Team__Score">
                     <img src={awayteam.flag} alt="team.name"/>
                     <span>{awayteam.name}</span>
-                    <span className="Scored">Score:{this.state.awayTeamScore}</span>
+                    <span className="Scored">Score:<span>{this.state.awayTeamScore}</span></span>
                     {!this.state.isShow_away &&
                     <input 
                         type="number" 

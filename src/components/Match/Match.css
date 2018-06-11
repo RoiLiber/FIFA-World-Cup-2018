@@ -140,8 +140,17 @@ span.stadiumCity {
 
 span.Scored {
     display: flex;
-    font-size: 10px;
+    font-size: 12px;
     padding: 0 5px 0 0;
-    font-weight: bold;
+    align-items: center;
+    font-weight: normal;
 }
+
+span.Scored span {
+    display: flex;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0 5px 0 10px;
+}
+
 
