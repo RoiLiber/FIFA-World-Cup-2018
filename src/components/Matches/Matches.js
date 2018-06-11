@@ -50,6 +50,24 @@ class Matches extends Component {
 
     return groupBy(matches, 'matchday');
   }
+
+  winner(home, groups) {
+
+    let groupsArr = [];
+    let homeStr = home
+    Object.keys(groups).map( (index => {
+      groupsArr.push(groups[index]);
+    }))
+    groupsArr.map((index => {
+      if (groupsArr[index] !== homeStr) {
+        console.log(homeStr);
+      }
+    }))
+
+    
+    console.log(groupsArr);
+    
+  }
   
   render() {
     const { groups, teams, stadiums, knockout, isLoading } = this.props;
@@ -98,7 +116,7 @@ class Matches extends Component {
                       match={match}
                       homeTeamScore={match.home_result}
                       awayTeamScore={match.away_result}
-                      knockouthometeam = {match.home_team}
+                      knockouthometeam = {this.winner(match.home_team, groups)}
                       knockoutawayteam = {match.away_team}
                       day={match.day}
                       date={
