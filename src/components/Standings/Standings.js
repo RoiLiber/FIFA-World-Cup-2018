@@ -15,8 +15,9 @@ import "./Standings.css";
 
 class Standings extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+
     this.state = {
       isHidden: true
     }
@@ -45,12 +46,17 @@ class Standings extends Component {
     return matchesInGroup;
   }
 
+  groupTeamsOrder(groupTeams) {
+
+  }
+
   render() {
     const { groups, teams, stadiums, isLoading } = this.props;
 
     if (isLoading) {
       return <span className="Loading">Loading . . .</span>;
     }
+
 
     return (
       <div className="Standings">
@@ -99,6 +105,7 @@ class Standings extends Component {
                       <TeamRow key={teamId} 
                         team={teams[teamId - 1]}
                         groupMatches={groupMatches}
+                        groupTeams= {groupTeams}
                       />
                     ))}
                   </tbody>
@@ -110,6 +117,8 @@ class Standings extends Component {
                       <Match
                         key={match.name}
                         match={match}
+                        homeTeamScore={match.home_result}
+                        awayTeamScore={match.away_result}
                         hometeam={teams[match.home_team - 1]}
                         awayteam={teams[match.away_team - 1]}
                         day={match.day}

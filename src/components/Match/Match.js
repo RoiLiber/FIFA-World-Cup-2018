@@ -21,13 +21,41 @@ class StadiumImg extends Component {
   }
 }
 
+
 class Match extends Component {
     
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
+
+        this.setHomeScore = this.setHomeScore.bind(this);
+        this.setAwayScore = this.setAwayScore.bind(this);
+
         this.state = {
-            isHidden: true
+            isHidden: true,
+            homeTeamScore: props.match.home_result,
+            awayTeamScore: props.match.away_result
         }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.match.home_result !== this.props.match.home_result || nextProps.match.away_result !== this.props.match.away_result) {
+            this.setState({
+                homeTeamScore: nextProps.match.home_result,
+                awayTeamScore: nextProps.match.home_result
+            })
+        }
+    }
+
+    setHomeScore(e) {
+        this.setState({
+            homeTeamScore: e.target.value
+        });
+    }
+
+    setAwayScore(e) {
+        this.setState({
+            awayTeamScore: e.target.value
+        });
     }
 
     toggleHidden() {
@@ -39,14 +67,6 @@ class Match extends Component {
     render() {
     const { date, hours, stadium, hometeam, awayteam, match, day } = this.props;
 
-    if(!this.props.matchTeamResult == null) {
-        return (<div>0</div>);
-    }
-
-    
-    // const awayteamscore = this.refs.awayTeam;
-    // const hometeamscore = this.refs.homeTeam;
-    console.log(match);
     return (
         <div className="MatchWrapper">
             <div className="Match">
@@ -54,14 +74,14 @@ class Match extends Component {
                 <div className="Team__Score">
                     <img src={hometeam.flag} alt="team.name"/> 
                     <span>{hometeam.name}</span>
-                    <span className="Scored">Scored: {match.home_result}{this.props.matchTeamResult}</span>
-                    <input type="number" id="homeTeam" ref="homeTeam" min="0" max="9" onChange={this.props.chengHomeTeamResult}/>
+                    <span>Score:{this.state.homeTeamScore}</span>
+                    <input type="number" id="coure" ref="soure" min="0" max="9" onChange={this.setHomeScore} />
                 </div> 
                 <div className="Team__Score">
                     <img src={awayteam.flag} alt="team.name"/>
                     <span>{awayteam.name}</span>
-                    <span className="Scored">Scored: {match.away_result}{this.props.matchTeamResult}</span>
-                    <input type="number" id="awayTeam" ref="awayTeam" min="0" max="9" onChange={this.props.chengAwayTeamResult}/> 
+                    <span>Score:{this.state.awayTeamScore}</span>
+                    <input type="number" id="coure" ref="soure" min="0" max="9" onChange={this.setAwayScore} /> 
                 </div>      
                 </div>
                 <div className="Match__Details">

@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+//components
+import ScoreInput from "../ScoreInput/ScoreInput";
+
 //styles
 import "./Match.css";
 import Matches from "../Matches/Matches";
@@ -19,10 +22,12 @@ class StadiumImg extends Component {
 
 class KnockoutMatch extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
+
         this.state = {
-            isHidden: true
+            isHidden: true,
+            teamResult: null
         }
     }
 
@@ -34,6 +39,7 @@ class KnockoutMatch extends Component {
 
     render() {
     const { date, hours, stadium, knockouthometeam, knockoutawayteam, day, match } = this.props;
+    
     return (
         <div className="MatchWrapper">
             <div className="Match">
@@ -41,14 +47,12 @@ class KnockoutMatch extends Component {
                 <div className="Team__Score">
                     {/* <img src={team[0].flag} alt="team.name"/>  */}
                     <span>{knockouthometeam}</span>
-                    <span className="Scored">Scored: {match.home_result}</span>
-                    <input type="number" min="0" max="9"/>
+                    <ScoreInput teamResult={this.state.teamResult}/>
                 </div> 
                 <div className="Team__Score">
                     {/* <img src={team[1].flag} alt="team.name"/> */}
                     <span>{knockoutawayteam}</span>
-                    <span className="Scored">Scored: {match.away_result}</span>
-                    <input type="number" min="0" max="9"/> 
+                    <ScoreInput teamResult={this.state.teamResult}/> 
                 </div>      
                 </div>
                 <div className="Match__Details">

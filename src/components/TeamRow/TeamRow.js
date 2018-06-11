@@ -123,9 +123,10 @@ class TeamRow extends Component {
     return Pts;
   }
 
-  
+
   render() {
-    const { team, groupMatches } = this.props;
+    const { team, groupMatches, groupTeams } = this.props;
+
     const teamMatchesArr = this.mapTeamMatchesFromGroupMatches(team, groupMatches);
     const teamPlayedMatchesArr = this.teamPlayedMatches(teamMatchesArr);
     const teamWinsArr = this.teamWins(team, teamPlayedMatchesArr);
