@@ -15,8 +15,6 @@ import NotFound from "../NotFound/NotFound";
 //styles
 import './App.css';
 
-
-
 class App extends Component {
 
   constructor(props) {

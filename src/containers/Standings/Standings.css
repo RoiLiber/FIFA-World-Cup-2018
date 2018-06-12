@@ -148,6 +148,7 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100%;
     height: 55px;
     border-top: 1px solid rgba(128, 128, 128, 0.822);
+    justify-content: flex-end;
 }
 
 .Standings .Groups .Group .Matches .Groups .MatchWrapper .Match {
@@ -157,7 +158,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .Standings .Groups .Group .Matches .Groups .MatchWrapper .StadiumImg {
-    height: 220px;
+    height: 164px;
+    width: 65%;
 }
 
 .Standings .Groups .Group .Matches .Groups .MatchWrapper .Match .Match__Teams {
