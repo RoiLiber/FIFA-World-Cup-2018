@@ -2,7 +2,7 @@ export default function() {
     return {
         "a": {
             "name": "Group A",
-            "winner": null,
+            "winner": "null",
             "runnerup": null,
             "matches": [{
                     "name": 1,

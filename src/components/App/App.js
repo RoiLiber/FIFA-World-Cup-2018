@@ -55,6 +55,10 @@ class App extends Component {
                   <Route path="/*" component={NotFound} />
                 </Switch>
               </main>
+
+              <footer>
+                <div>&copy; 2018 LiberRoi</div>
+              </footer>
           </div>
         </React.Fragment>
       </Router>

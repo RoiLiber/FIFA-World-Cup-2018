@@ -119,13 +119,11 @@ class TeamRow extends Component {
     if(winsPts > 0 || drawPts > 0) {
         Pts += winsPts + drawPts;
     }
-
     return Pts;
   }
 
-
   render() {
-    const { team, groupMatches, groupTeams } = this.props;
+    const { team, groupMatches, groupTeams, Pts } = this.props;
 
     const teamMatchesArr = this.mapTeamMatchesFromGroupMatches(team, groupMatches);
     const teamPlayedMatchesArr = this.teamPlayedMatches(teamMatchesArr);

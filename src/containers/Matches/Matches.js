@@ -7,8 +7,6 @@ import Group from "../../components/Group/Group";
 import Match from "../../components/Match/Match";
 import KnockoutMatch from "../../components/Match/KnockoutMatch";
 
-
-
 // styles
 import "./Matches.css";
 
@@ -19,14 +17,6 @@ class Matches extends Component {
     // get matches name and create matches in group array
     
     return this.props.groups[group].matches.map(
-      match => match
-    );
-  }
-
-  mapMatchesInRound(round) {
-    // get matches name and create matches in group array
-
-    return this.props.knockout[round].matches.map(
       match => match
     );
   }
@@ -51,22 +41,164 @@ class Matches extends Component {
     return groupBy(matches, 'matchday');
   }
 
-  winner(home, groups) {
+  // get matches name and create matches in group array
+  mapMatchesInRound(round) {
+    return this.props.knockout[round].matches.map(
+      match => match
+    );
+  }
+
+  // get matches name and create matches in group array
+  mapMatchesInRound(round) {
+    const a = this.props.knockout[round].matches.map(
+      match => match
+    );
+    console.log(a)
+    return a
+  }
+
+  winner(home, groups, knockout) {
 
     let groupsArr = [];
-    let homeStr = home
+    let homeStr = home;
+    let roundsArr = [];
+    let round16 = {};
+    let round8 = {};
+    let round4 = {};
+
     Object.keys(groups).map( (index => {
       groupsArr.push(groups[index]);
     }))
-    groupsArr.map((index => {
-      if (groupsArr[index] !== homeStr) {
-        console.log(homeStr);
-      }
+
+    Object.keys(knockout).map( (index => {
+      roundsArr.push(knockout[index]);
     }))
 
+    round16 = roundsArr[0].matches
+    round8 = roundsArr[1].matches
+    round4 = roundsArr[2].matches
     
-    console.log(groupsArr);
+    switch (homeStr) {
+      case "winner_a":
+        homeStr = 'Winner A:' + ' ' + groupsArr[0].winner;
+        break;
+      case "winner_c":
+        homeStr = 'Winner C:' + ' ' + groupsArr[2].winner;
+        break;
+      case "winner_b":
+        homeStr = 'Winner B:' + ' ' + groupsArr[1].winner;
+        break;
+      case "winner_d":
+        homeStr = 'Winner D:' + ' ' + groupsArr[3].winner;
+        break;
+      case "winner_e":
+        homeStr = 'Winner E:' + ' ' + groupsArr[4].winner;
+        break;
+      case "winner_g":
+        homeStr = 'Winner G:' + ' ' + groupsArr[6].winner;
+        break;
+      case "winner_f":
+        homeStr = 'Winner F:' + ' ' + groupsArr[5].winner;
+        break;
+      case "winner_h":
+        homeStr = 'Winner H:' + ' ' + groupsArr[7].winner;
+        break;
+      case 49:
+        homeStr = 'Match 49 Winner:' + ' ' + round16[0].winner;
+        break;
+      case 53:
+        homeStr = 'Match 53 Winner:' + ' ' + round16[4].winner;
+        break;
+      case 51:
+        homeStr = 'Match 51 Winner:' + ' ' + round16[2].winner;
+        break;
+      case 55:
+        homeStr = 'Match 55 Winner:' + ' ' + round16[6].winner;
+        break;
+      case 57:
+        homeStr = 'Match 57 Winner:' + ' ' + round8[0].winner;
+        break;
+      case 59:
+        homeStr = 'Match 59 Winner:' + ' ' + round8[2].winner;
+        break;
+      
+      default: "Winner";
+    }
+
     
+
+    return homeStr;
+  }
+
+  runner(away, groups, knockout) {
+
+    let groupsArr = [];
+    let awayStr = away;
+    let roundsArr = [];
+    let round16 = {};
+    let round8 = {};
+    let round4 = {};
+
+    Object.keys(groups).map((index => {
+      groupsArr.push(groups[index]);
+    }))
+
+    Object.keys(knockout).map((index => {
+      roundsArr.push(knockout[index]);
+    }))
+
+    round16 = roundsArr[0].matches
+    round8 = roundsArr[1].matches
+    round4 = roundsArr[2].matches
+
+    switch (awayStr) {
+      case "runner_b":
+        awayStr = 'Runner b:' + ' ' + groupsArr[1].winner;
+        break;
+      case "runner_d":
+        awayStr = 'Runner D:' + ' ' + groupsArr[3].winner;
+        break;
+      case "runner_a":
+        awayStr = 'Runner A:' + ' ' + groupsArr[0].winner;
+        break;
+      case "runner_c":
+        awayStr = 'Runner C:' + ' ' + groupsArr[2].winner;
+        break;
+      case "runner_f":
+        awayStr = 'Runner F:' + ' ' + groupsArr[5].winner;
+        break;
+      case "runner_h":
+        awayStr = 'Runner H:' + ' ' + groupsArr[7].winner;
+        break;
+      case "runner_e":
+        awayStr = 'Runner E:' + ' ' + groupsArr[4].winner;
+        break;
+      case "runner_g":
+        awayStr = 'Runner G:' + ' ' + groupsArr[6].winner;
+        break;
+      case 50:
+        awayStr = 'Match 50 Winner:' + ' ' + round16[1].winner;
+        break;
+      case 54:
+        awayStr = 'Match 54 Winner:' + ' ' + round16[5].winner;
+        break;
+      case 52:
+        awayStr = 'Match 52 Winner:' + ' ' + round16[3].winner;
+        break;
+      case 56:
+        awayStr = 'Match 56 Winner:' + ' ' + round16[7].winner;
+        break;
+      case 58:
+        awayStr = 'Match 58 Winner:' + ' ' + round8[1].winner;
+        break;
+      case 60:
+        awayStr = 'Match 60 Winner:' + ' ' + round8[3].winner;
+        break;
+
+      default:
+        "Runner";
+    }
+    return awayStr;
   }
   
   render() {
@@ -116,8 +248,8 @@ class Matches extends Component {
                       match={match}
                       homeTeamScore={match.home_result}
                       awayTeamScore={match.away_result}
-                      knockouthometeam = {this.winner(match.home_team, groups)}
-                      knockoutawayteam = {match.away_team}
+                      knockouthometeam = {this.winner(match.home_team, groups, knockout)}
+                      knockoutawayteam = {this.runner(match.away_team, groups, knockout)}
                       day={match.day}
                       date={
                           new Date(match.date).getDate() + '/' +

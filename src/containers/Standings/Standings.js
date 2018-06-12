@@ -20,7 +20,6 @@ class Standings extends Component {
 
     this.state = {
       isHidden: true,
-      
     }
   }
 
@@ -37,18 +36,15 @@ class Standings extends Component {
     );
     // Sort and filter duplicates
     return teamsInGroup
-      .sort((a, b) => a - b)
-      .filter((item, index, array) => array.indexOf(item) === index);
+      .filter((item, index, array) => array.indexOf(item) === index)
+      .sort((a, b) => a - b);
+      
   }
   // get group and create arr of this group matches
   mapMatchesInGroup(group) {
     const matchesInGroup = this.props.groups[group].matches.map(
       match => match);
     return matchesInGroup;
-  }
-
-  groupTeamsOrder(groupTeams) {
-
   }
 
   render() {
@@ -102,7 +98,9 @@ class Standings extends Component {
                   </thead>
                   <tbody className="Group__table-body">
                     {groupTeams.map((teamId) => (
-                      <TeamRow key={teamId} 
+                      <TeamRow 
+                        key={teamId}
+                        pts= {this.teamPts} 
                         team={teams[teamId - 1]}
                         groupMatches={groupMatches}
                         groupTeams= {groupTeams}

@@ -10,6 +10,7 @@
 
 .Main {
   margin-top: 80px;
+  margin-bottom: 50px;
 }
 
 .Loading {
@@ -19,4 +20,21 @@
   font-size: 20px;
   align-items: center;
   justify-content: center;
+}
+
+footer {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  align-items: center;
+  height: 40px;
+  box-shadow: 1px 1px 22px 2px rgba(0, 0, 0, 0.925);
+  background-color: RGB(11, 95, 145);
+  z-index: 2;
+  border-radius: 0 25px 0 25px;
+}
+
+footer div {
+  padding: 15px 15px 10px 10px;
+  color: white;
 }
