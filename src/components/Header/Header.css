@@ -8,7 +8,7 @@
     min-width: 610px;
     padding: 10px 10px 0 10px;
     box-shadow: 0px 0px 31px 11px rgba(0, 0, 0, 0.801);
-    background-color: RGB(11, 95, 145);
+    background-color: rgba(11, 96, 145, 0.9);
     border-radius: 0px 0px 40px 0px;
     z-index: 2;
 }
