@@ -55,7 +55,7 @@ class App extends Component {
               </main>
 
               <footer>
-                <div>&copy; 2018 LiberRoi</div>
+                <div className="C">&copy; 2018 LiberRoi</div>
               </footer>
           </div>
         </React.Fragment>

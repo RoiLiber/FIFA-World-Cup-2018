@@ -4,9 +4,15 @@
     /* align-items: flex-start; */
     justify-content: center;
     width: 50%;
-    height: 140px;
+    max-height: 140px;
+    transition: 0.7s all;
+    overflow: hidden;
     font-size: 15px;
     background-color: RGB(255, 255, 255);
+}
+
+div.showImg-active {
+    max-height: 420px;
 }
 
 .Match {
@@ -24,8 +30,12 @@
     display: flex;
     width: 100%;
     height: 280px;
-    z-index: 1;
-    border: 5px ridge rgba(128, 128, 128, 0.555);
+    /* z-index: 1; */
+}
+
+.russia2018 {
+    display: flex;
+    display: none;
 }
 
 .StadiumImg img {
@@ -76,7 +86,8 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    padding: 25px 10px 25px 20px;
+    padding: 0 0 0 20px;
+    height: 80%;
     border-left: 0.5px outset rgba(128, 128, 128, 0.158);
 }
 
@@ -153,4 +164,8 @@ span.Scored span {
     padding: 0 5px 0 10px;
 }
 
-
+@media only screen and (max-width: 750px) {
+    .MatchWrapper {
+        width: 100%;
+    }
+}

@@ -8,6 +8,10 @@ import { chengeHomeTeamResult, chengeAwayTeamResult } from "../../actions/action
 //styles
 import "./Match.css";
 
+//img
+import russia from './russia.PNG';
+import Russia from './russia.jpg';
+
 
 class StadiumImg extends Component {
   render() {
@@ -65,12 +69,22 @@ class Match extends Component {
             isHidden: !this.state.isHidden
         })
     }
+
+    toggleHShow() {
+        this.setState({
+            isHidden: !this.state.isHidden
+        })
+    }
   
     render() {
     const { date, hours, stadium, hometeam, awayteam, match, day } = this.props;
+    let className = '';
+    if (!this.state.isHidden) {
+        className += ' showImg-active';
+    }
 
     return (
-        <div className="MatchWrapper">
+        <div className={"MatchWrapper" + className}>
             <div className="Match">
                 <div className="Match__Teams">
                 <div className="Team__Score">
@@ -111,10 +125,11 @@ class Match extends Component {
                     <span>{hours}</span>
                 </span>
                 <span className="stadiumCity">{stadium.city}</span>
-                <span className="stadiumName" onClick={this.toggleHidden.bind(this)}>{stadium.name}</span>  
+                <span className="stadiumName" onClick={this.toggleHShow.bind(this)}>{stadium.name}</span>  
                 </div>
             </div>
-            {!this.state.isHidden && <StadiumImg key={stadium.name} stadium={stadium}/>}
+            <img className="russia2018" src={Russia} alt="russia"/>
+            <StadiumImg key={stadium.name} stadium={stadium}/>
         </div>
     );
   }

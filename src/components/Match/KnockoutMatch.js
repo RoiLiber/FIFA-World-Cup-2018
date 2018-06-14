@@ -62,11 +62,21 @@ class KnockoutMatch extends Component {
         })
     }
 
+    toggleHShow() {
+        this.setState({
+            isHidden: !this.state.isHidden
+        })
+    }
+
     render() {
     const { date, hours, stadium, knockouthometeam, knockoutawayteam, day, match } = this.props;
-    
+    let className = '';
+    if (!this.state.isHidden) {
+        className += ' showImg-active';
+    }
+
     return (
-        <div className="MatchWrapper">
+        <div className={"MatchWrapper" + className}>
             <div className="Match">
                 <div className="Match__Teams">
                 <div className="Team__Score">
@@ -107,7 +117,7 @@ class KnockoutMatch extends Component {
                     <span>{hours}</span>
                 </span>
                 <span className="stadiumCity">{stadium.city}</span> 
-                <span className="stadiumName" onClick={this.toggleHidden.bind(this)}>{stadium.name}</span>   
+                <span className="stadiumName" onClick={this.toggleHShow.bind(this)}>{stadium.name}</span>   
                 </div>
             </div>
             {!this.state.isHidden && <StadiumImg key={stadium.name} stadium={stadium}/>}
