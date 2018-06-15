@@ -8,6 +8,14 @@ import "./TeamRow.css";
 
 class TeamRow extends Component {
 
+    constructor(props) {
+        super(props)
+        
+        this.state = {
+            id: this.props.order
+        }
+    }
+
   // map the group matches and return 3 matches for each team
   mapTeamMatchesFromGroupMatches(team, groupMatches) {
     const teamMatches = [];
@@ -123,7 +131,7 @@ class TeamRow extends Component {
   }
 
   render() {
-    const { team, groupMatches, groupTeams, Pts } = this.props;
+    const { team, groupMatches, groupTeams, order } = this.props;
 
     const teamMatchesArr = this.mapTeamMatchesFromGroupMatches(team, groupMatches);
     const teamPlayedMatchesArr = this.teamPlayedMatches(teamMatchesArr);
@@ -136,7 +144,7 @@ class TeamRow extends Component {
     const teamPts = this.teamPts(teamWinsArr, teamDrawsArr);
 
     return (
-        <tr>
+        <tr className={this.props.order} ref={this.state.id}>
         <td>
             <img src={team.flag} alt="team.flag"/><span>{team.name}</span>
         </td>

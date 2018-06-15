@@ -20,6 +20,7 @@ class Standings extends Component {
 
     this.state = {
       isHidden: true,
+      orderTeam: ''
     }
   }
 
@@ -98,12 +99,12 @@ class Standings extends Component {
                   </thead>
                   <tbody className="Group__table-body">
                     {groupTeams.map((teamId) => (
-                      <TeamRow 
+                      <TeamRow
                         key={teamId}
-                        pts= {this.teamPts} 
                         team={teams[teamId - 1]}
                         groupMatches={groupMatches}
                         groupTeams= {groupTeams}
+                        order={this.state.orderTeam}
                       />
                     ))}
                   </tbody>
