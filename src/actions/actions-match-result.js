@@ -1,15 +1,15 @@
-export const chengeHomeTeamResult = (match) => {
-    console.log("you chenged on home result:", match.name);
+export const chengeHomeTeamResult = (homeTeamScore) => {
+    console.log("you chenged on home result:", homeTeamScore);
     return {
         type: "HOME_TEAM_RESULT_SELECTED",
-        payload: match.name
+        payload: homeTeamScore
     }
 };
 
-export const chengeAwayTeamResult = (match) => {
-    console.log("you chenged on away result:", match.name);
+export const chengeAwayTeamResult = (awayTeamScore) => {
+    console.log("you chenged on away result:", awayTeamScore);
     return {
         type: "AWAY_TEAM_RESULT_SELECTED",
-        payload: match.name
+        payload: awayTeamScore
     }
 };
